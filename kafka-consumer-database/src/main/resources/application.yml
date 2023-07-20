@@ -1,0 +1,21 @@
+spring:
+    datasource:
+        password: root
+        url: jdbc:postgresql://localhost:5432/kafka_cdp_events
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: true
+                use_sql_comments: true
+        show-sql: true
+    kafka:
+        consumer:
+            auto-offset-reset: earliest
+            bootstrap-servers: localhost:9092
+            group-id: =cdp_group
+            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

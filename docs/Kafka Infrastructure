@@ -1,0 +1,18 @@
+1. Pull the Kafka image from Docker Hub using the following command:
+
+docker pull wurstmeister/kafka
+-----------------------------------------------------------------
+Create a Docker network:
+
+docker network create kafka-net
+-----------------------------------------------------------------
+Start a Zookeeper container:
+
+docker run -d --name zookeeper --network kafka-net -p 2181:2181 wurstmeister/zookeeper
+-----------------------------------------------------------------
+Start a Kafka broker:
+docker run -d --name kafka --network kafka-net -p 9092:9092 \
+-e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 \
+-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 \
+-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 \
+wurstmeister/kafka

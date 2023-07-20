@@ -1,0 +1,9 @@
+To set up the database for the first time, run the following command:
+
+Connect to postgres via cli
+Conntect to psql via cli
+create database "database name";
+
+Open Data Grip and test the database connection
+Connect to the database via Data Grip
+Check out the saved data via Data Grip
